@@ -1,0 +1,1025 @@
+/* ==========================================================================
+   Better for YouTube — Material 3 Expressive theme for www.youtube.com
+   Tokens (--md-*) come from ../shared/m3-tokens.css (loaded first). Each
+   feature is scoped to an attribute on <html> that main.js toggles.
+   ========================================================================== */
+
+/* ---------------------------------------------------------------------------
+   1. Map YouTube's design tokens onto the M3 roles (light and dark).
+   --------------------------------------------------------------------------- */
+:root[data-bytm-theme][data-bytm-theme],
+:root[data-bytm-theme][data-bytm-scheme="dark"] [dark][dark] {
+  --yt-sys-color-baseline--base-background: var(--md-surface);
+  --yt-sys-color-baseline--raised-background: var(--md-surface-container);
+  --yt-sys-color-baseline--menu-background: var(--md-surface-container-high);
+  --yt-sys-color-baseline--inverted-background: var(--md-primary);
+  --yt-sys-color-baseline--inverted-background-hover: color-mix(in oklab, var(--md-primary), var(--md-on-primary) 10%);
+  --yt-sys-color-baseline--additive-background: color-mix(in oklab, var(--md-on-surface) 8%, transparent);
+  --yt-sys-color-baseline--outline: var(--md-outline-variant);
+  --yt-sys-color-baseline--outline-opaque: var(--md-outline-variant);
+  --yt-sys-color-baseline--text-primary: var(--md-on-surface);
+  --yt-sys-color-baseline--text-primary-inverse: var(--md-on-primary);
+  --yt-sys-color-baseline--text-secondary: var(--md-on-surface-variant);
+  --yt-sys-color-baseline--text-disabled: color-mix(in oklab, var(--md-on-surface) 38%, transparent);
+  --yt-sys-color-baseline--call-to-action: var(--md-primary);
+  --yt-sys-color-baseline--call-to-action-hover: color-mix(in oklab, var(--md-primary), var(--md-on-primary) 12%);
+  --yt-sys-color-baseline--call-to-action-inverse: var(--md-primary);
+  --yt-sys-color-baseline--suggested-action: var(--md-secondary-container);
+  --yt-sys-color-baseline--suggested-action-hover: color-mix(in oklab, var(--md-secondary-container), var(--md-on-secondary-container) 8%);
+  --yt-sys-color-baseline--touch-response: var(--md-on-surface);
+  --yt-sys-color-baseline--static-brand-red: var(--md-primary);
+  --yt-sys-color-baseline--red-indicator: var(--md-primary);
+  --yt-sys-color-baseline--error-indicator: var(--md-error);
+  --yt-sys-color-baseline--themed-green: var(--md-tertiary);
+  --yt-sys-color-baseline--mono-tonal-hover: color-mix(in oklab, var(--md-on-surface) 14%, transparent);
+  --yt-sys-color-baseline--mono-filled-hover: color-mix(in oklab, var(--md-primary), var(--md-on-primary) 10%);
+  --yt-sys-color-baseline--button-chip-background-hover: color-mix(in oklab, var(--md-on-surface) 12%, transparent);
+  --yt-sys-color-baseline--tonal-background: var(--md-secondary-container);
+  --yt-sys-color-baseline--frosted-glass-desktop: var(--md-surface);
+  --yt-sys-color-baseline--frosted-glass-mobile: var(--md-surface);
+  --yt-sys-color-baseline--shadow-medium: rgb(0 0 0 / 0.2);
+  --yt-sys-color-baseline--scrim-background-gradient-1: color-mix(in oklab, var(--md-surface) 0%, transparent);
+  --yt-sys-color-baseline--scrim-background-gradient-2: color-mix(in oklab, var(--md-surface) 30%, transparent);
+  --yt-sys-color-baseline--scrim-background-gradient-3: color-mix(in oklab, var(--md-surface) 60%, transparent);
+  --yt-sys-color-baseline--scrim-background-gradient-4: color-mix(in oklab, var(--md-surface) 90%, transparent);
+  --yt-sys-color-baseline--scrim-background-gradient-5: var(--md-surface);
+  --yt-deprecated-general-background-a: var(--md-surface-container-low);
+  --yt-deprecated-general-background-b: var(--md-surface);
+  --yt-deprecated-general-background-c: var(--md-surface-container-lowest);
+  --ytd-searchbox-background: var(--md-surface-container-high);
+  --ytd-searchbox-text-color: var(--md-on-surface);
+  --ytd-searchbox-border-color: transparent;
+  --ytd-searchbox-legacy-border-color: transparent;
+  --ytd-searchbox-legacy-button-color: var(--md-surface-container-highest);
+  --ytd-searchbox-legacy-button-border-color: transparent;
+  --ytd-searchbox-legacy-button-icon-color: var(--md-on-surface-variant);
+  --yt-endpoint-hover-color: var(--md-on-surface);
+  --paper-spinner-color: var(--md-primary);
+  --iron-icon-fill-color: currentColor;
+  color-scheme: dark;
+  accent-color: var(--md-primary);
+}
+:root[data-bytm-theme][data-bytm-scheme="light"] {
+  color-scheme: light;
+}
+/* The video player is always dark: in the light scheme it uses the light tone. */
+:root {
+  --bytm-player-accent: var(--md-primary);
+}
+:root[data-bytm-scheme="light"] {
+  --bytm-player-accent: var(--md-inverse-primary);
+}
+
+/* ---------------------------------------------------------------------------
+   2. Typography — Google Sans Flex, rounded emphasized headings
+   --------------------------------------------------------------------------- */
+html[data-bytm-type] {
+  --ytd-default-font-family: "Google Sans Flex", "Google Sans", Roboto, Arial, sans-serif;
+}
+html[data-bytm-type] :is(body, ytd-app, input, button, textarea, yt-formatted-string, .yt-core-attributed-string, #video-title, .ytp-chrome-bottom) {
+  font-family: "Google Sans Flex", "Google Sans", Roboto, Arial, sans-serif !important;
+}
+html[data-bytm-type] :is(ytd-watch-metadata #title h1, yt-page-header-view-model h1, ytd-channel-name#channel-name.ytd-c4-tabbed-header-renderer, ytd-shelf-renderer #title, ytd-rich-shelf-renderer #title, ytd-item-section-header-renderer #title) {
+  font-variation-settings: "ROND" 100, "opsz" 36;
+  font-weight: 700 !important;
+  letter-spacing: -0.01em;
+}
+html[data-bytm-type] :is(#video-title, .yt-lockup-metadata-view-model__title, .ytLockupMetadataViewModelTitle) {
+  font-variation-settings: "ROND" 60;
+  font-weight: 600;
+}
+
+/* ---------------------------------------------------------------------------
+   3. Surfaces, focus, selection, scrollbars
+   --------------------------------------------------------------------------- */
+html[data-bytm-theme],
+html[data-bytm-theme] body,
+html[data-bytm-theme] ytd-app {
+  background: var(--md-surface) !important;
+}
+html[data-bytm-theme] ytd-masthead #background,
+html[data-bytm-theme] #frosted-glass {
+  background: var(--md-surface) !important;
+}
+html[data-bytm-theme] ::selection {
+  background: var(--md-primary-container);
+  color: var(--md-on-primary-container);
+}
+html[data-bytm-theme] :focus-visible {
+  outline: 3px solid var(--md-primary) !important;
+  outline-offset: 2px;
+}
+/* The player takes focus on every click; YouTube shows no ring there. */
+html[data-bytm-theme] :is(#movie_player, .html5-video-player, video):focus-visible,
+html[data-bytm-theme] #movie_player :is(.ytp-menuitem, .ytp-panel-menu *):focus-visible {
+  outline: none !important;
+}
+html[data-bytm-theme] ::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+  background: transparent !important;
+}
+html[data-bytm-theme] ::-webkit-scrollbar-thumb {
+  background: var(--md-outline-variant) !important;
+  border: 3px solid transparent !important;
+  border-radius: var(--md-shape-full) !important;
+  background-clip: padding-box !important;
+}
+html[data-bytm-theme] ::-webkit-scrollbar-thumb:hover {
+  background-color: var(--md-outline) !important;
+}
+html[data-bytm-theme] ::-webkit-scrollbar-track {
+  background: transparent !important;
+}
+html[data-bytm-theme] yt-page-navigation-progress #progress {
+  background: var(--md-primary) !important;
+}
+
+/* ---------------------------------------------------------------------------
+   4. Search — one M3 search bar (input + button merged into a pill)
+   --------------------------------------------------------------------------- */
+html[data-bytm-theme] .ytSearchboxComponentInputBox {
+  background: var(--md-surface-container-high) !important;
+  border: 0 !important;
+  border-radius: var(--md-shape-full) 0 0 var(--md-shape-full) !important;
+  box-shadow: none !important;
+  min-height: 44px;
+}
+html[data-bytm-theme] .ytSearchboxComponentSearchButton {
+  background: var(--md-surface-container-highest) !important;
+  border: 0 !important;
+  border-radius: 0 var(--md-shape-full) var(--md-shape-full) 0 !important;
+  color: var(--md-on-surface-variant) !important;
+  min-height: 44px;
+  transition: background-color var(--md-effects-dur) var(--md-effects);
+}
+html[data-bytm-theme] .ytSearchboxComponentSearchButton:hover {
+  background: color-mix(in oklab, var(--md-surface-container-highest), var(--md-on-surface) 8%) !important;
+  color: var(--md-on-surface) !important;
+}
+html[data-bytm-theme] .ytSearchboxComponentInput {
+  color: var(--md-on-surface) !important;
+}
+html[data-bytm-theme] .ytSearchboxComponentSuggestionsContainer {
+  background: var(--md-surface-container-high) !important;
+  border: 0 !important;
+  border-radius: var(--md-shape-xl) !important;
+  box-shadow: 0 8px 28px rgb(0 0 0 / 0.3) !important;
+  overflow: hidden;
+  padding-block: 8px !important;
+}
+html[data-bytm-theme] .ytSuggestionComponentHighlighted,
+html[data-bytm-theme] .ytSuggestionComponentSuggestion:hover {
+  background: color-mix(in oklab, var(--md-on-surface) 8%, transparent) !important;
+}
+html[data-bytm-theme] :is(#voice-search-button button, #voice-search-button yt-icon-button) {
+  background: var(--md-surface-container-high) !important;
+  border-radius: var(--md-shape-full) !important;
+}
+
+/* ---------------------------------------------------------------------------
+   5. Navigation drawer / rail
+   --------------------------------------------------------------------------- */
+html[data-bytm-theme] :is(ytd-guide-renderer, tp-yt-app-drawer #contentContainer, ytd-mini-guide-renderer) {
+  background: var(--md-surface) !important;
+}
+html[data-bytm-theme] ytd-guide-entry-renderer tp-yt-paper-item {
+  border-radius: var(--md-shape-full) !important;
+  transition: background-color var(--md-effects-dur) var(--md-effects), border-radius var(--md-spring-fast-dur) var(--md-spring-fast);
+}
+html[data-bytm-theme] ytd-guide-entry-renderer:not([active]) tp-yt-paper-item:hover {
+  background: color-mix(in oklab, var(--md-on-surface) 8%, transparent) !important;
+}
+html[data-bytm-theme] ytd-guide-entry-renderer tp-yt-paper-item:active {
+  border-radius: var(--md-shape-md) !important;
+}
+html[data-bytm-theme] ytd-guide-entry-renderer[active] tp-yt-paper-item {
+  background: var(--md-secondary-container) !important;
+  color: var(--md-on-secondary-container) !important;
+}
+html[data-bytm-theme] ytd-guide-entry-renderer[active] :is(.title, yt-icon, yt-formatted-string) {
+  color: var(--md-on-secondary-container) !important;
+  font-weight: 700;
+}
+html[data-bytm-theme] ytd-mini-guide-entry-renderer {
+  border-radius: var(--md-shape-lg) !important;
+}
+html[data-bytm-theme] ytd-mini-guide-entry-renderer:hover {
+  background: color-mix(in oklab, var(--md-on-surface) 8%, transparent) !important;
+}
+/* Rail: the active destination gets the M3 pill indicator behind its icon */
+html[data-bytm-theme] ytd-mini-guide-entry-renderer:is([aria-selected="true"], [active]) yt-icon {
+  color: var(--md-on-secondary-container);
+  background: var(--md-secondary-container);
+  border-radius: var(--md-shape-full);
+  outline: 6px solid var(--md-secondary-container);
+  outline-offset: -1px;
+}
+html[data-bytm-theme] ytd-guide-section-renderer {
+  border-color: var(--md-outline-variant) !important;
+}
+
+/* ---------------------------------------------------------------------------
+   6. Chips (filters at the top of home, search, watch next)
+   --------------------------------------------------------------------------- */
+html[data-bytm-theme] :is(yt-chip-cloud-chip-renderer #chip-container, yt-chip-cloud-chip-renderer .ytChipShapeChip, .ytChipShapeChip) {
+  background: transparent !important;
+  border: 1px solid var(--md-outline-variant) !important;
+  border-radius: var(--md-shape-sm) !important;
+  color: var(--md-on-surface-variant) !important;
+  transition:
+    border-radius var(--md-spring-fast-dur) var(--md-spring-fast),
+    background-color var(--md-effects-dur) var(--md-effects) !important;
+}
+html[data-bytm-theme] :is(yt-chip-cloud-chip-renderer #chip-container, .ytChipShapeChip):hover {
+  background: color-mix(in oklab, var(--md-on-surface) 8%, transparent) !important;
+  border-radius: var(--md-shape-lg) !important;
+}
+html[data-bytm-theme] :is(yt-chip-cloud-chip-renderer[selected] #chip-container, .ytChipShapeChip.ytChipShapeActive, .ytChipShapeActive) {
+  background: var(--md-secondary-container) !important;
+  border-color: transparent !important;
+  border-radius: var(--md-shape-lg) !important;
+  color: var(--md-on-secondary-container) !important;
+}
+html[data-bytm-theme] :is(ytd-feed-filter-chip-bar-renderer, #chips-wrapper, ytd-feed-filter-chip-bar-renderer #chips-wrapper) {
+  background: var(--md-surface) !important;
+}
+html[data-bytm-theme] ytd-feed-filter-chip-bar-renderer #left-arrow {
+  background: linear-gradient(to right, var(--md-surface) 60%, transparent) !important;
+}
+html[data-bytm-theme] ytd-feed-filter-chip-bar-renderer #right-arrow {
+  background: linear-gradient(to left, var(--md-surface) 60%, transparent) !important;
+}
+
+/* ---------------------------------------------------------------------------
+   7. Thumbnails & cards
+   --------------------------------------------------------------------------- */
+html[data-bytm-theme] :is(
+  ytd-thumbnail a#thumbnail,
+  ytd-thumbnail yt-image,
+  ytd-thumbnail img,
+  yt-thumbnail-view-model,
+  .yt-thumbnail-view-model__image,
+  .ytThumbnailViewModelImage,
+  ytd-playlist-thumbnail,
+  .yt-lockup-view-model__content-image,
+  ytd-rich-grid-media #thumbnail
+) {
+  border-radius: var(--md-shape-lg-inc) !important;
+}
+html[data-bytm-theme] :is(ytd-thumbnail, yt-thumbnail-view-model) {
+  border-radius: var(--md-shape-lg-inc);
+  overflow: hidden;
+  transition: border-radius var(--md-spring-default-dur) var(--md-spring-default);
+}
+html[data-bytm-theme] :is(ytd-rich-item-renderer, ytd-video-renderer, yt-lockup-view-model):hover :is(ytd-thumbnail, yt-thumbnail-view-model, ytd-thumbnail a#thumbnail, ytd-thumbnail img, .yt-thumbnail-view-model__image, .ytThumbnailViewModelImage) {
+  border-radius: var(--md-shape-xl-inc) !important;
+}
+html[data-bytm-theme] #secondary :is(ytd-thumbnail, yt-thumbnail-view-model, ytd-thumbnail a#thumbnail, ytd-thumbnail img, .yt-thumbnail-view-model__image, .ytThumbnailViewModelImage) {
+  border-radius: var(--md-shape-md) !important;
+}
+/* Duration / LIVE badges -> small tonal pills */
+html[data-bytm-theme] :is(
+  ytd-thumbnail-overlay-time-status-renderer #time-status,
+  ytd-thumbnail-overlay-time-status-renderer .badge-shape-wiz--thumbnail-default,
+  badge-shape.yt-badge-shape--thumbnail-default,
+  .ytBadgeShapeThumbnailDefault,
+  .yt-badge-shape--thumbnail-badge
+) {
+  background: color-mix(in oklab, var(--md-inverse-surface) 82%, transparent) !important;
+  color: var(--md-inverse-on-surface) !important;
+  border-radius: var(--md-shape-full) !important;
+  padding-inline: 8px !important;
+  font-weight: 600 !important;
+}
+/* Watched progress bar on thumbnails */
+html[data-bytm-theme] :is(ytd-thumbnail-overlay-resume-playback-renderer #progress, .ytThumbnailOverlayProgressBarHostWatchedProgressBarSegment, .ytThumbnailOverlayProgressBarHostWatchedProgressBarSegmentModern) {
+  background: var(--md-primary) !important;
+  border-radius: var(--md-shape-full);
+}
+html[data-bytm-theme] ytd-thumbnail-overlay-resume-playback-renderer {
+  background: color-mix(in oklab, var(--md-on-surface) 25%, transparent) !important;
+}
+/* Badges: LIVE uses the M3 error role, "special" badges the secondary container */
+html[data-bytm-theme] :is(.ytBadgeShapeThumbnailLive, .yt-badge-shape--thumbnail-live, .badge-style-type-live-now-alternate, .ytSpecAvatarShapeLiveBadge) {
+  background: var(--md-error) !important;
+  color: var(--md-on-error) !important;
+  border-radius: var(--md-shape-full) !important;
+}
+html[data-bytm-theme] :is(.ytBadgeShapeThumbnailLive, .ytSpecAvatarShapeLiveBadge) :is(svg, path, .ytBadgeShapeText, .ytSpecAvatarShapeLiveBadgeText) {
+  color: var(--md-on-error) !important;
+  fill: var(--md-on-error) !important;
+}
+html[data-bytm-theme] .ytBadgeShapeThumbnailSpecial {
+  background: var(--md-secondary-container) !important;
+  color: var(--md-on-secondary-container) !important;
+  border-radius: var(--md-shape-full) !important;
+}
+/* "Watch later" / "Add to queue" hover buttons on thumbnails */
+html[data-bytm-theme] ytd-thumbnail-overlay-toggle-button-renderer {
+  background: color-mix(in oklab, var(--md-inverse-surface) 85%, transparent) !important;
+  color: var(--md-inverse-on-surface) !important;
+  border-radius: var(--md-shape-full) !important;
+}
+html[data-bytm-theme] ytd-thumbnail-overlay-now-playing-renderer {
+  background: color-mix(in oklab, var(--md-surface) 80%, transparent) !important;
+  color: var(--md-on-surface) !important;
+}
+html[data-bytm-theme] ytd-thumbnail-overlay-now-playing-renderer :is(#overlay-text, #equalizer) {
+  color: inherit !important;
+  fill: currentColor !important;
+}
+/* The logo's play shape takes the primary color */
+html[data-bytm-theme] ytd-topbar-logo-renderer :is(path, circle, polygon)[fill="#FF0033" i],
+html[data-bytm-theme] ytd-topbar-logo-renderer :is(path, circle, polygon)[fill="#FF0000" i],
+html[data-bytm-theme] ytd-topbar-logo-renderer :is(path, circle, polygon)[fill="#F00" i] {
+  fill: var(--md-primary) !important;
+}
+html[data-bytm-theme] ytd-topbar-logo-renderer :is(path, polygon)[fill="white" i],
+html[data-bytm-theme] ytd-topbar-logo-renderer :is(path, polygon)[fill="#FFF" i],
+html[data-bytm-theme] ytd-topbar-logo-renderer :is(path, polygon)[fill="#FFFFFF" i] {
+  fill: var(--md-on-primary) !important;
+}
+
+/* Avatars stay round, channel pictures get the M3 cookie on hover */
+html[data-bytm-theme] :is(#avatar-link, #avatar, yt-img-shadow.ytd-video-owner-renderer, yt-avatar-shape, .yt-spec-avatar-shape) img {
+  border-radius: 50%;
+}
+
+/* ---------------------------------------------------------------------------
+   8. Buttons — pills that morph toward rounded squares when pressed
+   --------------------------------------------------------------------------- */
+html[data-bytm-theme] :is(.ytSpecButtonShapeNextHost, .yt-spec-button-shape-next) {
+  border-radius: var(--md-shape-full) !important;
+  transition:
+    border-radius var(--md-spring-fast-dur) var(--md-spring-fast),
+    background-color var(--md-effects-dur) var(--md-effects) !important;
+}
+html[data-bytm-theme] :is(.ytSpecButtonShapeNextHost, .yt-spec-button-shape-next):active {
+  border-radius: var(--md-shape-md) !important;
+}
+html[data-bytm-theme] :is(.ytSpecButtonShapeNextHost.ytSpecButtonShapeNextFilled, .yt-spec-button-shape-next--filled):is(.ytSpecButtonShapeNextMono, .yt-spec-button-shape-next--mono, .ytSpecButtonShapeNextCallToAction, .yt-spec-button-shape-next--call-to-action) {
+  background: var(--md-primary) !important;
+  color: var(--md-on-primary) !important;
+}
+html[data-bytm-theme] :is(.ytSpecButtonShapeNextHost.ytSpecButtonShapeNextTonal, .yt-spec-button-shape-next--tonal):not(.ytSpecButtonShapeNextOverlay, .yt-spec-button-shape-next--overlay) {
+  background: var(--md-secondary-container) !important;
+  color: var(--md-on-secondary-container) !important;
+}
+html[data-bytm-theme] :is(.ytSpecButtonShapeNextHost.ytSpecButtonShapeNextOutline, .yt-spec-button-shape-next--outline) {
+  border-color: var(--md-outline-variant) !important;
+  color: var(--md-primary) !important;
+}
+html[data-bytm-theme] :where(.ytSpecButtonShapeNextHost.ytSpecButtonShapeNextText, .yt-spec-button-shape-next--text) {
+  color: var(--md-on-surface-variant) !important;
+}
+html[data-bytm-theme] :where(.ytSpecButtonShapeNextHost.ytSpecButtonShapeNextText, .yt-spec-button-shape-next--text):hover {
+  background: color-mix(in oklab, var(--md-on-surface) 8%, transparent) !important;
+  color: var(--md-on-surface) !important;
+}
+html[data-bytm-theme] :where(.ytSpecButtonShapeNextHost.ytSpecButtonShapeNextOutline, .yt-spec-button-shape-next--outline):hover {
+  background: color-mix(in oklab, var(--md-primary) 8%, transparent) !important;
+}
+html[data-bytm-theme] :where(.ytSpecButtonShapeNextHost.ytSpecButtonShapeNextTonal:not(.ytSpecButtonShapeNextOverlay), .yt-spec-button-shape-next--tonal:not(.yt-spec-button-shape-next--overlay)):is(:hover, :active) {
+  background: color-mix(in oklab, var(--md-secondary-container), var(--md-on-secondary-container) 10%) !important;
+}
+html[data-bytm-theme] :where(.ytSpecButtonShapeNextHost.ytSpecButtonShapeNextFilled, .yt-spec-button-shape-next--filled):is(:hover, :active) {
+  background: color-mix(in oklab, var(--md-primary), var(--md-on-primary) 10%) !important;
+}
+html[data-bytm-theme] :where(.ytSpecButtonShapeNextHost.ytSpecButtonShapeNextDisabled, .yt-spec-button-shape-next--disabled) {
+  background: color-mix(in oklab, var(--md-on-surface) 12%, transparent) !important;
+  color: color-mix(in oklab, var(--md-on-surface) 38%, transparent) !important;
+}
+html[data-bytm-theme] :is(.ytSpecTouchFeedbackShapeFill, .yt-spec-touch-feedback-shape__fill) {
+  border-radius: inherit !important;
+}
+html[data-bytm-theme] :where(yt-icon-button, tp-yt-paper-icon-button) {
+  border-radius: var(--md-shape-full);
+}
+html[data-bytm-theme] yt-interaction .fill {
+  background: var(--md-on-surface) !important;
+}
+/* Like / dislike -> M3 connected button group */
+html[data-bytm-theme] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper {
+  gap: 2px;
+  background: transparent !important;
+}
+html[data-bytm-theme] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper like-button-view-model .ytSpecButtonShapeNextHost {
+  border-radius: var(--md-shape-full) var(--md-shape-xs) var(--md-shape-xs) var(--md-shape-full) !important;
+}
+html[data-bytm-theme] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper dislike-button-view-model .ytSpecButtonShapeNextHost {
+  border-radius: var(--md-shape-xs) var(--md-shape-full) var(--md-shape-full) var(--md-shape-xs) !important;
+}
+html[data-bytm-theme] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper .ytSpecButtonShapeNextHost:active {
+  border-radius: var(--md-shape-md) !important;
+}
+html[data-bytm-theme] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper .ytSpecButtonShapeNextHost::after,
+html[data-bytm-theme] .ytSegmentedLikeDislikeButtonViewModelSegmentedButtonsWrapper .ytSpecButtonShapeNextSegmentedStart::after {
+  display: none !important; /* YouTube's separator line */
+}
+html[data-bytm-theme] like-button-view-model button[aria-pressed="true"] {
+  background: var(--md-primary) !important;
+  color: var(--md-on-primary) !important;
+}
+
+/* Links inside YouTube's "attributed strings" (descriptions, comments) */
+html[data-bytm-theme] .ytAttributedStringLinkCallToActionColor {
+  color: var(--md-primary) !important;
+}
+html[data-bytm-theme] .ytAttributedStringLinkInheritColor {
+  color: inherit !important;
+}
+html[data-bytm-theme] yt-formatted-string {
+  --yt-endpoint-color: currentColor;
+}
+
+/* ---------------------------------------------------------------------------
+   9. Watch page
+   --------------------------------------------------------------------------- */
+html[data-bytm-theme] ytd-watch-flexy:not([theater]):not([fullscreen]) :is(#ytd-player, #player-container-inner, #movie_player, .html5-video-container, video.html5-main-video) {
+  border-radius: var(--md-shape-xl) !important;
+}
+html[data-bytm-theme] ytd-watch-flexy:not([theater]):not([fullscreen]) #ytd-player {
+  overflow: hidden;
+}
+html[data-bytm-theme] ytd-watch-metadata #description {
+  background: var(--md-surface-container-high) !important;
+  border-radius: var(--md-shape-lg-inc) !important;
+  transition: background-color var(--md-effects-dur) var(--md-effects);
+}
+html[data-bytm-theme] ytd-watch-metadata #description:hover {
+  background: var(--md-surface-container-highest) !important;
+}
+html[data-bytm-theme] :is(ytd-engagement-panel-section-list-renderer, ytd-playlist-panel-renderer #container) {
+  background: var(--md-surface-container-low) !important;
+  border: 0 !important;
+  border-radius: var(--md-shape-xl) !important;
+  overflow: hidden;
+}
+html[data-bytm-theme] ytd-engagement-panel-title-header-renderer {
+  background: transparent !important;
+}
+html[data-bytm-theme] ytd-playlist-panel-video-renderer {
+  border-radius: var(--md-shape-lg) !important;
+  margin-inline: 8px;
+}
+html[data-bytm-theme] ytd-playlist-panel-video-renderer[selected] {
+  background: var(--md-secondary-container) !important;
+}
+html[data-bytm-theme] ytd-playlist-panel-video-renderer:hover:not([selected]) {
+  background: color-mix(in oklab, var(--md-on-surface) 6%, transparent) !important;
+}
+/* Comments */
+html[data-bytm-theme] ytd-comment-simplebox-renderer #placeholder-area {
+  border: 0 !important;
+  border-radius: var(--md-shape-full);
+  background: var(--md-surface-container-high);
+  padding: 10px 16px;
+}
+html[data-bytm-theme] ytd-commentbox {
+  background: var(--md-surface-container-high);
+  border-radius: var(--md-shape-lg-inc);
+  padding: 12px 16px;
+}
+html[data-bytm-theme] ytd-commentbox #contenteditable-root,
+html[data-bytm-theme] ytd-commentbox tp-yt-paper-input-container .underline {
+  border-color: var(--md-outline-variant) !important;
+}
+html[data-bytm-theme] :is(ytd-comment-view-model, ytd-comment-renderer) #author-thumbnail img {
+  border-radius: 50%;
+}
+html[data-bytm-theme] ytd-comment-replies-renderer #more-replies button,
+html[data-bytm-theme] ytd-comment-replies-renderer #less-replies button {
+  color: var(--md-primary) !important;
+}
+/* Live chat / chapters / transcript panels get the same container shape */
+html[data-bytm-theme] #chat-container #chat {
+  border-radius: var(--md-shape-xl) !important;
+  overflow: hidden;
+  border: 0 !important;
+}
+
+/* ---------------------------------------------------------------------------
+   10. Video player (always drawn over a dark video, so it uses the player
+   accent: the primary tone that reads on dark, even in the light scheme)
+   --------------------------------------------------------------------------- */
+#movie_player {
+  --bytm-pill: oklch(0.2 calc(var(--bytm-chroma) * 0.25) var(--bytm-hue) / 0.62);
+  --bytm-pill-hover: oklch(0.32 calc(var(--bytm-chroma) * 0.3) var(--bytm-hue) / 0.78);
+  --bytm-on-accent: oklch(0.22 calc(var(--bytm-chroma) * 0.6) var(--bytm-hue));
+}
+
+/* Progress: accent colors (also used when the wavy bar is off) */
+html[data-bytm-theme] #movie_player :is(.ytp-swatch-background-color, .ytp-play-progress) {
+  background: var(--bytm-player-accent) !important;
+}
+html[data-bytm-theme] #movie_player .ytp-swatch-color {
+  color: var(--bytm-player-accent) !important;
+}
+html[data-bytm-theme] #movie_player .ytp-progress-list {
+  border-radius: var(--md-shape-full);
+  background: rgb(255 255 255 / 0.22) !important;
+}
+html[data-bytm-theme] #movie_player .ytp-load-progress {
+  background: rgb(255 255 255 / 0.35) !important;
+  border-radius: var(--md-shape-full);
+}
+html[data-bytm-theme] #movie_player :is(.ytp-play-progress, .ytp-hover-progress) {
+  border-radius: var(--md-shape-full);
+}
+html[data-bytm-theme] #movie_player .ytp-scrubber-button {
+  background: var(--bytm-player-accent) !important;
+}
+
+/* Wavy progress: YouTube's slider stays on top (transparent) for input. */
+html[data-bytm-wavy] #movie_player .ytp-progress-bar-container canvas.bytm-wave {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 100%;
+  height: 26px;
+  transform: translateY(-50%);
+  pointer-events: none;
+  z-index: 31;
+}
+html[data-bytm-wavy] #movie_player .ytp-progress-bar-container :is(.ytp-progress-list, .ytp-play-progress, .ytp-load-progress, .ytp-hover-progress) {
+  background: transparent !important;
+  box-shadow: none !important;
+}
+html[data-bytm-wavy] #movie_player .ytp-progress-bar-container .ytp-scrubber-button {
+  opacity: 0 !important;
+}
+html[data-bytm-wavy] #movie_player .ytp-progress-bar-container {
+  z-index: 32; /* above the controls' hover target so the whole wave is grabbable */
+}
+
+/* Big centre play button */
+html[data-bytm-theme] #movie_player .ytp-large-play-button-bg {
+  fill: var(--bytm-player-accent) !important;
+  fill-opacity: 1 !important;
+}
+html[data-bytm-theme] #movie_player .ytp-large-play-button path:not(.ytp-large-play-button-bg) {
+  fill: var(--bytm-on-accent) !important;
+}
+
+/* Control groups -> tonal pills with state layers */
+html[data-bytm-theme] #movie_player :is(.ytp-volume-area, .ytp-time-wrapper, .ytp-right-controls, .ytp-chapter-container .ytp-chapter-title, .ytp-prev-button, .ytp-next-button) {
+  background: var(--bytm-pill) !important;
+  border-radius: var(--md-shape-full) !important;
+}
+html[data-bytm-theme] #movie_player .ytp-chrome-controls .ytp-button:not(.ytp-play-button) {
+  border-radius: var(--md-shape-full) !important;
+  transition: background-color var(--md-effects-dur) var(--md-effects), border-radius var(--md-spring-fast-dur) var(--md-spring-fast);
+}
+html[data-bytm-theme] #movie_player .ytp-chrome-controls .ytp-button:not(.ytp-play-button):not(.bytm-pip-button):hover {
+  background: rgb(255 255 255 / 0.12) !important;
+}
+html[data-bytm-theme] #movie_player .ytp-chrome-controls .ytp-button:not(.ytp-play-button):not(.bytm-pip-button):active {
+  border-radius: var(--md-shape-md) !important;
+}
+
+/* Play / pause: primary, a circle while paused, a squircle while playing */
+html[data-bytm-theme] #movie_player .ytp-play-button {
+  background: var(--bytm-player-accent) !important;
+  border-radius: 50% !important;
+  transition:
+    border-radius var(--md-spring-default-dur) var(--md-spring-default),
+    transform var(--md-spring-fast-dur) var(--md-spring-fast) !important;
+}
+html[data-bytm-theme] #movie_player.playing-mode .ytp-play-button {
+  border-radius: var(--md-shape-md) !important;
+}
+html[data-bytm-theme] #movie_player .ytp-play-button:active {
+  transform: scale(0.9);
+}
+html[data-bytm-theme] #movie_player .ytp-play-button :is(path, .ytp-svg-fill) {
+  fill: var(--bytm-on-accent) !important;
+}
+
+/* Picture-in-picture button (pip.js), right after the volume control */
+#movie_player .bytm-pip-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
+  flex: none;
+  width: 40px;
+  height: 40px;
+  margin-inline-start: 8px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: rgb(0 0 0 / 0.3);
+  opacity: 1;
+}
+#movie_player .bytm-pip-button svg {
+  width: 22px;
+  height: 22px;
+  fill: #fff;
+}
+html[data-bytm-theme] #movie_player .bytm-pip-button {
+  background: var(--bytm-pill) !important;
+  transition:
+    background-color var(--md-effects-dur) var(--md-effects),
+    border-radius var(--md-spring-fast-dur) var(--md-spring-fast) !important;
+}
+html[data-bytm-theme] #movie_player .bytm-pip-button:hover {
+  background: var(--bytm-pill-hover) !important;
+}
+html[data-bytm-theme] #movie_player .bytm-pip-button:active {
+  border-radius: var(--md-shape-md) !important;
+}
+html[data-bytm-theme] #movie_player .bytm-pip-button[aria-pressed="true"] {
+  background: var(--bytm-player-accent) !important;
+  border-radius: var(--md-shape-md) !important;
+}
+html[data-bytm-theme] #movie_player .bytm-pip-button[aria-pressed="true"] svg {
+  fill: var(--bytm-on-accent);
+}
+
+/* Captions: each line becomes a rounded M3 pill on a tinted dark surface.
+   Size stays YouTube's (it scales with the player); toggle: "Material captions". */
+html[data-bytm-captions] #movie_player .caption-window {
+  background: transparent !important;
+}
+html[data-bytm-captions] #movie_player .ytp-caption-segment {
+  background: oklch(0.18 calc(var(--bytm-chroma) * 0.35) var(--bytm-hue) / 0.84) !important;
+  color: oklch(0.97 calc(var(--bytm-chroma) * 0.12) var(--bytm-hue)) !important;
+  font-family: "Google Sans Flex", "Google Sans", Roboto, Arial, sans-serif !important;
+  font-weight: 600 !important;
+  font-variation-settings: "ROND" 60;
+  letter-spacing: 0.005em;
+  line-height: 1.6 !important;
+  padding: 0.14em 0.5em !important;
+  border-radius: 0.55em;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  text-shadow: none !important;
+}
+html[data-bytm-captions] #movie_player .caption-visual-line + .caption-visual-line .ytp-caption-segment {
+  margin-top: 0.12em;
+}
+/* CC button "on": a filled accent pill instead of YouTube's red underline */
+html[data-bytm-theme] #movie_player .ytp-subtitles-button[aria-pressed="true"] {
+  background: var(--bytm-player-accent) !important;
+  border-radius: var(--md-shape-md) !important;
+}
+html[data-bytm-theme] #movie_player .ytp-subtitles-button[aria-pressed="true"] :is(svg, path, .ytp-svg-fill) {
+  fill: var(--bytm-on-accent) !important;
+}
+html[data-bytm-theme] #movie_player .ytp-subtitles-button[aria-pressed="true"]::after {
+  display: none !important;
+}
+
+/* The "HD" badge on the settings gear */
+html[data-bytm-theme] #movie_player .ytp-settings-button.ytp-hd-quality-badge::after,
+html[data-bytm-theme] #movie_player .ytp-settings-button.ytp-4k-quality-badge::after,
+html[data-bytm-theme] #movie_player .ytp-settings-button.ytp-5k-quality-badge::after,
+html[data-bytm-theme] #movie_player .ytp-settings-button.ytp-8k-quality-badge::after {
+  background-color: var(--bytm-player-accent) !important;
+  color: var(--bytm-on-accent) !important;
+  border-radius: 4px;
+}
+
+/* Volume slider: accent fill, soft track */
+html[data-bytm-theme] #movie_player .ytp-volume-slider-handle {
+  background: var(--bytm-player-accent) !important;
+}
+html[data-bytm-theme] #movie_player .ytp-volume-slider-handle::before {
+  background: var(--bytm-player-accent) !important;
+  border-radius: var(--md-shape-full);
+}
+html[data-bytm-theme] #movie_player .ytp-volume-slider-handle::after {
+  background: rgb(255 255 255 / 0.26) !important;
+  border-radius: var(--md-shape-full);
+}
+
+/* Settings / context menus */
+html[data-bytm-theme] #movie_player :is(.ytp-popup, .ytp-settings-menu, .ytp-panel-menu, .ytp-contextmenu) {
+  background: oklch(0.2 calc(var(--bytm-chroma) * 0.2) var(--bytm-hue) / 0.95) !important;
+  border-radius: var(--md-shape-lg-inc) !important;
+  box-shadow: 0 8px 28px rgb(0 0 0 / 0.45) !important;
+}
+html[data-bytm-theme] #movie_player .ytp-menuitem {
+  border-radius: var(--md-shape-md);
+}
+html[data-bytm-theme] #movie_player .ytp-menuitem:hover,
+html[data-bytm-theme] #movie_player .ytp-menuitem:focus-visible {
+  background: rgb(255 255 255 / 0.09) !important;
+}
+html[data-bytm-theme] #movie_player .ytp-menuitem[aria-checked="true"] .ytp-menuitem-toggle-checkbox,
+html[data-bytm-theme] #movie_player .ytp-autonav-toggle-button[aria-checked="true"] {
+  background: var(--bytm-player-accent) !important;
+}
+html[data-bytm-theme] #movie_player :is(.ytp-menuitem-toggle-checkbox, .ytp-autonav-toggle-button)::after {
+  background: #fff !important;
+}
+html[data-bytm-theme] #movie_player .ytp-menuitem[aria-checked="true"] .ytp-menuitem-toggle-checkbox::after,
+html[data-bytm-theme] #movie_player .ytp-autonav-toggle-button[aria-checked="true"]::after {
+  background: var(--bytm-on-accent) !important;
+}
+html[data-bytm-theme] #movie_player .ytp-panel-header {
+  border-color: rgb(255 255 255 / 0.12) !important;
+}
+
+/* Tooltips, chapter chip, autoplay countdown, end screen wall */
+html[data-bytm-theme] #movie_player :is(.ytp-tooltip-text, .ytp-tooltip-bg, .ytp-tooltip-text-wrapper) {
+  border-radius: var(--md-shape-sm) !important;
+}
+html[data-bytm-theme] #movie_player .ytp-tooltip.ytp-preview .ytp-tooltip-bg {
+  border-radius: var(--md-shape-md) !important;
+  overflow: hidden;
+}
+html[data-bytm-theme] #movie_player :is(.ytp-videowall-still, .ytp-videowall-still-image, .ytp-autonav-endscreen-upnext-thumbnail, .ytp-ce-video, .ytp-ce-playlist) {
+  border-radius: var(--md-shape-lg) !important;
+  overflow: hidden;
+}
+html[data-bytm-theme] #movie_player :is(.ytp-autonav-endscreen-upnext-play-button, .ytp-autonav-endscreen-upnext-cancel-button) {
+  border-radius: var(--md-shape-full) !important;
+}
+html[data-bytm-theme] #movie_player .ytp-autonav-endscreen-upnext-play-button {
+  background: var(--bytm-player-accent) !important;
+  color: var(--bytm-on-accent) !important;
+}
+html[data-bytm-theme] #movie_player .ytp-autonav-endscreen-upnext-cancel-button {
+  background: var(--bytm-pill-hover) !important;
+}
+
+/* Ads: skip button and CTA as M3 pills (ads themselves are not blocked) */
+html[data-bytm-theme] #movie_player :is(.ytp-skip-ad-button, .ytp-ad-skip-button, .ytp-ad-skip-button-modern) {
+  background: var(--bytm-player-accent) !important;
+  color: var(--bytm-on-accent) !important;
+  border: 0 !important;
+  border-radius: var(--md-shape-full) !important;
+}
+html[data-bytm-theme] #movie_player :is(.ytp-skip-ad-button, .ytp-ad-skip-button-modern) :is(svg, path) {
+  fill: var(--bytm-on-accent) !important;
+}
+html[data-bytm-theme] #movie_player :is(.ytp-ad-button-vm, .ytp-ad-avatar-lockup-card) {
+  border-radius: var(--md-shape-full) !important;
+}
+html[data-bytm-theme] #movie_player .ytp-ad-persistent-progress-bar {
+  background: var(--md-tertiary) !important;
+}
+
+/* Miniplayer (bottom-right while browsing) */
+html[data-bytm-theme] ytd-miniplayer :is(#card, .ytdMiniplayerComponentContent, #player-container) {
+  border-radius: var(--md-shape-xl) !important;
+  overflow: hidden;
+}
+html[data-bytm-theme] ytd-miniplayer {
+  --ytd-miniplayer-border-radius: var(--md-shape-xl);
+}
+
+/* ---------------------------------------------------------------------------
+   11. Menus, sheets, dialogs, tooltips, toasts
+   --------------------------------------------------------------------------- */
+html[data-bytm-theme] :is(ytd-menu-popup-renderer, ytd-multi-page-menu-renderer, yt-sheet-view-model, .ytSheetViewModelHost, tp-yt-paper-listbox, ytd-simple-menu-header-renderer) {
+  background: var(--md-surface-container-high) !important;
+  border: 0 !important;
+  border-radius: var(--md-shape-lg) !important;
+  box-shadow: 0 6px 24px rgb(0 0 0 / 0.28) !important;
+}
+html[data-bytm-theme] tp-yt-iron-dropdown #contentWrapper > * {
+  border-radius: var(--md-shape-lg) !important;
+}
+html[data-bytm-theme] :is(ytd-menu-service-item-renderer, ytd-menu-navigation-item-renderer, ytd-compact-link-renderer, ytd-toggle-theme-compact-link-renderer, yt-list-item-view-model, .yt-list-item-view-model) {
+  border-radius: var(--md-shape-md) !important;
+  margin-inline: 4px;
+  overflow: hidden;
+}
+html[data-bytm-theme] :is(ytd-menu-service-item-renderer, ytd-menu-navigation-item-renderer, ytd-compact-link-renderer) tp-yt-paper-item:hover,
+html[data-bytm-theme] :is(yt-list-item-view-model, .yt-list-item-view-model):hover {
+  background: color-mix(in oklab, var(--md-on-surface) 8%, transparent) !important;
+}
+html[data-bytm-theme] :is(tp-yt-paper-dialog, yt-dialog-view-model, .ytDialogViewModelHost, ytd-popup-container tp-yt-paper-dialog) {
+  background: var(--md-surface-container-high) !important;
+  border-radius: var(--md-shape-xl) !important;
+  border: 0 !important;
+  box-shadow: 0 10px 36px rgb(0 0 0 / 0.4) !important;
+  overflow: hidden;
+}
+html[data-bytm-theme] tp-yt-iron-overlay-backdrop {
+  background: var(--md-scrim) !important;
+}
+html[data-bytm-theme] :is(tp-yt-paper-tooltip #tooltip, yt-tooltip, .ytTooltipContainerDefault) {
+  background: var(--md-inverse-surface) !important;
+  color: var(--md-inverse-on-surface) !important;
+  border-radius: var(--md-shape-sm) !important;
+  font-weight: 500;
+}
+html[data-bytm-theme] :is(tp-yt-paper-toast, yt-notification-action-renderer tp-yt-paper-toast, .yt-snackbar, snackbar-container > *) {
+  background: var(--md-inverse-surface) !important;
+  color: var(--md-inverse-on-surface) !important;
+  border-radius: var(--md-shape-md) !important;
+}
+html[data-bytm-theme] tp-yt-paper-toggle-button[checked] .toggle-bar,
+html[data-bytm-theme] tp-yt-paper-toggle-button[checked] .toggle-button {
+  background: var(--md-primary) !important;
+}
+html[data-bytm-theme] tp-yt-paper-checkbox[checked] #checkbox {
+  background: var(--md-primary) !important;
+  border-color: var(--md-primary) !important;
+  border-radius: 4px;
+}
+html[data-bytm-theme] tp-yt-paper-radio-button[checked] #onRadio {
+  background: var(--md-primary) !important;
+}
+html[data-bytm-theme] tp-yt-paper-radio-button[checked] #offRadio {
+  border-color: var(--md-primary) !important;
+}
+
+/* ---------------------------------------------------------------------------
+   12. Channel pages & tabs
+   --------------------------------------------------------------------------- */
+html[data-bytm-theme] :is(yt-image-banner-view-model, .yt-image-banner-view-model-wiz, .ytImageBannerViewModelHost) {
+  border-radius: var(--md-shape-xl) !important;
+  overflow: hidden;
+}
+html[data-bytm-theme] :is(.ytTabGroupShapeSlider, .yt-tab-group-shape-wiz__slider, #selectionBar.tp-yt-paper-tabs) {
+  background: var(--md-primary) !important;
+  border-radius: 3px 3px 0 0;
+  height: 3px !important;
+}
+html[data-bytm-theme] :is(.ytTabShapeTab, .yt-tab-shape-wiz__tab) {
+  border-radius: var(--md-shape-md) var(--md-shape-md) 0 0;
+  transition: background-color var(--md-effects-dur) var(--md-effects);
+}
+html[data-bytm-theme] :is(.ytTabShapeTab, .yt-tab-shape-wiz__tab):hover {
+  background: color-mix(in oklab, var(--md-on-surface) 8%, transparent);
+}
+html[data-bytm-theme] :is(.ytTabShapeTabSelected, .yt-tab-shape-wiz__tab--tab-selected) {
+  color: var(--md-primary) !important;
+}
+
+/* ---------------------------------------------------------------------------
+   13. Minimal interface
+   --------------------------------------------------------------------------- */
+html[data-bytm-minimal] :is(
+  #movie_player .ytp-ce-element,          /* end-screen cards */
+  #movie_player .ytp-cards-teaser,
+  #movie_player .ytp-cards-button,
+  #movie_player .iv-branding,              /* channel watermark */
+  #movie_player .ytp-paid-content-overlay,
+  ytd-merch-shelf-renderer,
+  #clarify-box,
+  ytd-info-panel-content-renderer,
+  ytd-info-panel-container-renderer,
+  ytd-guide-renderer #footer,
+  /* "Explore", "More from YouTube" and "Report history" guide sections */
+  ytd-guide-section-renderer:has(
+    a[href^="/feed/trending"], a[href^="/feed/explore"], a[href^="/feed/storefront"], a[href^="/gaming"],
+    a[href*="hype"], a[href^="/channel/UC-9-kyTW8ZkZNDHQJ6FgpwQ"], a[href*="music.youtube.com"],
+    a[href*="youtubekids"], a[href*="studio.youtube.com"], a[href^="/reporthistory"]
+  ),
+  ytd-guide-signin-promo-renderer,
+  #voice-search-button,
+  #ai-companion-button,
+  ytd-rich-section-renderer:has(ytd-statement-banner-renderer, ytd-brand-video-singleton-renderer),
+  ytd-feed-nudge-renderer,
+  ytd-watch-metadata #teaser-carousel
+) {
+  display: none !important;
+}
+/* Calmer grid spacing */
+html[data-bytm-minimal] ytd-rich-grid-renderer {
+  --ytd-rich-grid-row-margin: 32px;
+}
+
+/* Hide Shorts everywhere */
+html[data-bytm-no-shorts] :is(
+  ytd-reel-shelf-renderer,
+  ytd-rich-shelf-renderer[is-shorts],
+  ytd-rich-section-renderer:has(ytd-rich-shelf-renderer[is-shorts]),
+  grid-shelf-view-model:has(ytm-shorts-lockup-view-model, ytm-shorts-lockup-view-model-v2),
+  ytd-rich-item-renderer:has(ytm-shorts-lockup-view-model, ytm-shorts-lockup-view-model-v2),
+  ytd-video-renderer:has(a[href^="/shorts/"]),
+  ytd-guide-entry-renderer:has(a[href^="/shorts"]),
+  ytd-guide-entry-renderer:has(a[title="Shorts"]),
+  ytd-mini-guide-entry-renderer:has(a[href^="/shorts"]),
+  ytd-mini-guide-entry-renderer[aria-label="Shorts"],
+  yt-tab-shape[tab-title="Shorts"]                  /* channel page tab */
+) {
+  display: none !important;
+}
+
+/* Premium promos */
+html[data-bytm-hide-upsells] :is(
+  ytd-banner-promo-renderer,
+  ytd-mealbar-promo-renderer,
+  yt-mealbar-promo-renderer,
+  ytd-statement-banner-renderer,
+  ytd-primetime-promo-renderer,
+  ytd-guide-entry-renderer:has(a[href="/premium"]),
+  tp-yt-paper-dialog:has(ytd-mealbar-promo-renderer, yt-mealbar-promo-renderer)
+) {
+  display: none !important;
+}
+
+/* ---------------------------------------------------------------------------
+   14. Speed
+   --------------------------------------------------------------------------- */
+/* Skip layout/paint for everything off screen */
+html[data-bytm-lazy] ytd-rich-grid-renderer #contents > ytd-rich-item-renderer {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 360px;
+}
+html[data-bytm-lazy] ytd-rich-grid-renderer #contents > ytd-rich-section-renderer {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 480px;
+}
+html[data-bytm-lazy] ytd-item-section-renderer #contents > :is(ytd-video-renderer, ytd-playlist-renderer, ytd-channel-renderer) {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 210px;
+}
+html[data-bytm-lazy] #secondary :is(ytd-compact-video-renderer, yt-lockup-view-model) {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 100px;
+}
+html[data-bytm-lazy] ytd-comments ytd-comment-thread-renderer {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 140px;
+}
+
+/* Lightweight effects: ambient mode re-renders the video into blurred
+   canvases every frame; YouTube also puts live backdrop blurs behind the
+   masthead, chip bar and tonal buttons, and runs JS ripples on click. */
+html[data-bytm-light] :is(#cinematics, #cinematics-container, .ytd-watch-flexy #cinematics) {
+  display: none !important;
+}
+html[data-bytm-light] :is(ytd-masthead, ytd-masthead #background, #frosted-glass, ytd-feed-filter-chip-bar-renderer, #chips-wrapper, .ytSpecButtonShapeNextHost, .yt-spec-button-shape-next, tp-yt-iron-dropdown, ytd-menu-popup-renderer, #movie_player .ytp-popup, #movie_player .ytp-chrome-bottom) {
+  -webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
+}
+html[data-bytm-light] tp-yt-paper-ripple {
+  display: none !important;
+}
+html[data-bytm-light] tp-yt-paper-spinner-lite:not([active]),
+html[data-bytm-light] tp-yt-paper-spinner-lite:not([active]) * {
+  animation: none !important;
+}
+
+/* No hover previews (tweaks.js also stops the events that start them) */
+html[data-bytm-no-previews] :is(ytd-video-preview, #video-preview, ytd-moving-thumbnail-renderer, #mouseover-overlay) {
+  display: none !important;
+}
+
+/* ---------------------------------------------------------------------------
+   15. Volume indicator (scroll over the player controls)
+   --------------------------------------------------------------------------- */
+.bytm-volume-toast {
+  position: fixed;
+  left: 50%;
+  top: 88px;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 18px;
+  min-width: 180px;
+  border-radius: var(--md-shape-full);
+  background: var(--md-surface-container-highest);
+  color: var(--md-on-surface);
+  box-shadow: 0 6px 24px rgb(0 0 0 / 0.3);
+  font: 600 14px/1 "Google Sans Flex", Roboto, sans-serif;
+  font-variant-numeric: tabular-nums;
+  opacity: 0;
+  transform: translate(-50%, -12px) scale(0.9);
+  pointer-events: none;
+  transition:
+    opacity var(--md-effects-dur) var(--md-effects),
+    transform var(--md-spring-fast-dur) var(--md-spring-fast);
+}
+.bytm-volume-toast.bytm-visible {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+.bytm-volume-track {
+  flex: 1;
+  height: 8px;
+  border-radius: var(--md-shape-full);
+  background: var(--md-secondary-container);
+  overflow: hidden;
+}
+.bytm-volume-level {
+  height: 100%;
+  border-radius: inherit;
+  background: var(--md-primary);
+  transition: width var(--md-spring-fast-dur) var(--md-spring-fast);
+}
+.bytm-volume-label {
+  min-width: 3.5em;
+  text-align: end;
+}
+
+/* ---------------------------------------------------------------------------
+   16. Reduced motion
+   --------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --md-spring-fast: ease;
+    --md-spring-default: ease;
+    --md-spring-fast-dur: 1ms;
+    --md-spring-default-dur: 1ms;
+  }
+}
