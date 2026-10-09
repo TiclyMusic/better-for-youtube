@@ -38,3 +38,12 @@ Ads are not blocked.
 ## Shared code
 
 `src/shared/m3-tokens.css`, `src/shared/color.js` and `src/popup/popup.{js,css}` are generated copies of `../shared/`. Edit the originals there, then run `node tools/sync-shared.mjs` from the `Extensions/` folder.
+
+## Download
+
+Get the latest build from the [Releases page](https://github.com/TiclyMusic/better-for-youtube/releases/latest). Unzip it, open `chrome://extensions`, enable Developer mode and use **Load unpacked**.
+
+## Other extensions
+
+- [Better for YouTube Music](https://github.com/TiclyMusic/better-for-yt-music)
+- [Better for Spotify](https://github.com/TiclyMusic/better-for-spotify)
